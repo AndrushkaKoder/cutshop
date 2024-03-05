@@ -1,4 +1,3 @@
-{{--base site layout--}}
 @include('layout.head')
 
 <body x-data="{ 'showTaskUploadModal': false, 'showTaskEditModal': false }" x-cloak>

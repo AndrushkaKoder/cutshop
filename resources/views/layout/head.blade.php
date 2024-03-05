@@ -1,3 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locate') }}">
-@include('layout.meta')
+<head>
+	<title>sitename</title>
+	@include('layout.meta')
+
+	@vite(['resources/css/app.css'])
+</head>
+

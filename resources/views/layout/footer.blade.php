@@ -28,10 +28,10 @@
 
 {{--@include('../parts/mobile-menu.html')--}}
 
+@include('layout.templates.mobile_menu')
+@include('layout.templates.modals')
 {{--@include('../parts/modals.html')--}}
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-<script src="./js/app.js"></script>
-
 </body>
 </html>
