@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\File\SaveFilesTrait;
 use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Models\Category;
 use App\Models\Vendor;
 
 class ProductSeeder extends BaseSeeder
@@ -42,7 +42,7 @@ class ProductSeeder extends BaseSeeder
 		$categories = str_contains($data['categories'], '//') ? explode('//', $data['categories']) : [$data['categories']];
 
 		$ids = array_map(function ($categoryName) {
-			return ProductCategory::query()->whereTitle($categoryName)->firstOrFail()->id;
+			return Category::query()->whereTitle($categoryName)->firstOrFail()->id;
 		}, $categories);
 
 		$product->categories()->sync($ids);

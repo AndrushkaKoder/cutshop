@@ -34,8 +34,8 @@
 					<button @click="dropdownProfile = ! dropdownProfile"
 					        class="flex items-center text-white hover:text-pink transition">
 						<span class="sr-only">Профиль</span>
-						<img src="./images/avatar.jpg" class="shrink-0 w-7 md:w-9 h-7 md:h-9 rounded-full"
-						     alt="Данил Шуцкий">
+{{--						<img src="./images/avatar.jpg" class="shrink-0 w-7 md:w-9 h-7 md:h-9 rounded-full"--}}
+{{--						     alt="Данил Шуцкий">--}}
 						<span class="hidden md:block ml-2 font-medium">Данил</span>
 						<svg class="shrink-0 w-3 h-3 ml-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
 						     viewBox="0 0 30 16">
