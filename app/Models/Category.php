@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Kalnoy\Nestedset\NodeTrait;
 
-class ProductCategory extends Model
+class Category extends Model
 {
+
+	use NodeTrait;
+
+	protected $table = 'categories';
 	protected $fillable = [
 		'title',
 		'slug',
@@ -17,7 +22,7 @@ class ProductCategory extends Model
 	protected static function boot(): void
 	{
 		parent::boot();
-		static::creating(fn(ProductCategory $category) => $category->slug = Str::slug($category->title));
+		static::creating(fn(Category $category) => $category->slug = Str::slug($category->title));
 	}
 
 	public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany

@@ -32,7 +32,7 @@ class Product extends Model
 	public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	{
 		return $this->belongsToMany(
-			ProductCategory::class,
+			Category::class,
 			'category_product',
 			'product_id',
 			'category_id'

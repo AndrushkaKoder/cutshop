@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
 	{
 		$this->call(ParamsSeeder::class);
 		$this->call(VendorSeeder::class);
-		$this->call(ProductCategorySeeder::class);
+		$this->call(CategoriesSeeder::class);
 		$this->call(ProductSeeder::class);
 	}
 }
