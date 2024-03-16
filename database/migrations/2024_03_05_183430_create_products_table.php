@@ -14,7 +14,7 @@ return new class extends Migration {
 			$table->string('slug', 255);
 			$table->string('description', 255)->nullable();
 			$table->text('text')->nullable();
-			$table->decimal('price');
+			$table->decimal('price')->default(0);
 			$table->decimal('discount_price')->nullable();
 			$table->integer('discount_percent')->nullable();
 			$table->unsignedInteger('vendor_id');
