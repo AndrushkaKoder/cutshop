@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\File\FileTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Vendor extends Model
 {
+	use FileTrait;
+
 	protected $fillable = [
 		'title',
 		'slug',

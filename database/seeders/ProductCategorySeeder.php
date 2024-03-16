@@ -19,7 +19,6 @@ class ProductCategorySeeder extends BaseSeeder
 				'sort' => $sort,
 			]);
 			$category->save();
-
 			$sort++;
 		}
 	}

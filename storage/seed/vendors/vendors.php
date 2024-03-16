@@ -3,78 +3,74 @@
 return [
 	[
 		'title' => 'HyperX',
-		'cover' => '',
+		'cover' => 'covers/4.png',
 	],
 	[
 		'title' => 'SteelSeries',
-		'cover' => '',
+		'cover' => 'covers/1.png',
 	],
 	[
 		'title' => 'Razer',
-		'cover' => '',
+		'cover' => 'covers/2.png',
 	],
 	[
 		'title' => 'PlayStation',
-		'cover' => '',
+		'cover' => 'covers/5.png',
 	],
 	[
 		'title' => 'Xbox',
-		'cover' => '',
+		'cover' => 'covers/6.png',
 	],
 	[
 		'title' => 'A4Tech',
-		'cover' => '',
+		'cover' => 'covers/a4tech.jpg',
 	],
 	[
 		'title' => 'Logitech',
-		'cover' => '',
+		'cover' => 'covers/logitech.png',
 	],
 	[
 		'title' => 'Sennheiser',
-		'cover' => '',
+		'cover' => 'covers/SENNHEISER-logo.jpg',
 	],
 	[
 		'title' => 'Acer',
-		'cover' => '',
+		'cover' => 'covers/acer.jpg',
 	],
 	[
 		'title' => 'Asus',
-		'cover' => '',
+		'cover' => 'covers/asus.jpg',
 	],
 	[
 		'title' => 'Apple',
-		'cover' => '',
+		'cover' => 'covers/apple.jpg',
 	],
 	[
 		'title' => 'Xiaomi',
-		'cover' => '',
+		'cover' => 'covers/Xiaomi.png',
 	],
 	[
 		'title' => 'LG',
-		'cover' => '',
-	],
-	[
-		'title' => 'DEXP',
-		'cover' => '',
+		'cover' => 'covers/lg.jpg',
 	],
 	[
 		'title' => 'Phillips',
-		'cover' => '',
+		'cover' => 'covers/philips.jpeg',
 	],
 	[
 		'title' => 'Samsung',
-		'cover' => '',
+		'cover' => 'covers/samsung.jpeg',
 	],
 	[
 		'title' => 'MSI',
-		'cover' => '',
+		'cover' => 'covers/msi.png',
 	],
 	[
 		'title' => 'SONY',
-		'cover' => '',
+		'cover' => 'covers/sony.png',
 	],
 	[
 		'title' => 'JBL',
-		'cover' => '',
+		'cover' => 'covers/jbl.png',
 	],
 ];
