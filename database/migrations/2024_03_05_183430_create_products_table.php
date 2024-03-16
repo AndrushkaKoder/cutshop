@@ -14,18 +14,19 @@ return new class extends Migration {
 			$table->string('slug', 255);
 			$table->string('description', 255)->nullable();
 			$table->text('text')->nullable();
-			$table->unsignedInteger('price');
+			$table->decimal('price');
+			$table->decimal('discount_price')->nullable();
+			$table->integer('discount_percent')->nullable();
 			$table->unsignedInteger('vendor_id');
-			$table->tinyInteger('visible');
+			$table->tinyInteger('visible')->default(1);
 			$table->tinyInteger('sort');
-			$table->tinyInteger('in_main');
+			$table->tinyInteger('in_main')->default(1);
 			$table->timestamps();
 
 			$table->foreign('vendor_id')
 				->on('vendors')
 				->references('id')
-				->cascadeOnUpdate()
-				->cascadeOnDelete();
+				->cascadeOnUpdate();
 		});
 	}
 
