@@ -2,8 +2,8 @@
 	<div class="container">
 		<div class="flex flex-wrap lg:flex-nowrap items-center">
 			<div class="footer-logo order-0 basis-full sm:basis-1/2 lg:basis-1/3 shrink-0 text-center sm:text-left">
-				<a href="/" class="inline-block" rel="home">
-					<img src="./images/logo.svg" class="w-[155px] h-[38px]" alt="CutCode">
+				<a href="/">
+					<img src="{{ asset('images/logo.png') }}" class="logo" alt="logo">
 				</a>
 			</div><!-- /.footer-logo -->
 			<div class="footer-copyright order-2 lg:order-1 basis-full lg:basis-1/3 mt-8 lg:mt-0">
@@ -28,8 +28,8 @@
 
 {{--@include('../parts/mobile-menu.html')--}}
 
-@include('layout.templates.mobile_menu')
-@include('layout.templates.modals')
+{{--@include('layout.templates.mobile_menu')--}}
+{{--@include('layout.templates.modals')--}}
 {{--@include('../parts/modals.html')--}}
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
