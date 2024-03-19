@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	return view('home.home');
 });
+
+Route::get('/login', function (\Illuminate\Support\Facades\Request $request) {
+	return view('lk.login');
+});
+
+Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, ''])->name('post.login');
