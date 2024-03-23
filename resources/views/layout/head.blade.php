@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locate') }}">
+<html lang="{{ app()->currentLocale() }}">
 <head>
 	<title>sitename</title>
 	@include('layout.meta')
 
-	@vite(['resources/css/app.css'])
+	@vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
