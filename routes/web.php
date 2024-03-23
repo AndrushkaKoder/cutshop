@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Lk\LkController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	return view('home.home');
-});
+	return view('home.index');
+})->name('home');
 
-Route::get('/login', function (\Illuminate\Support\Facades\Request $request) {
-	return view('lk.login');
-});
 
-Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, ''])->name('post.login');
+Route::get('/lk/{id}/edit', [LkController::class, 'edit'])->middleware('auth')->name('user.lk.edit');
+Route::post('/lk/{id}/update', [LkController::class, 'update'])->middleware('auth')->name('user.lk.update');
+
+include 'auth.php';
+
+

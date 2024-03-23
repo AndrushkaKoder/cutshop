@@ -7,3 +7,4 @@
 <link rel="mask-icon" href="./images/safari-pinned-tab.svg" color="#1E1F43">
 <meta name="msapplication-TileColor" content="#1E1F43">
 <meta name="theme-color" content="#1E1F43">
+<meta name="csrf-token" content="{{ csrf_token() }}">
