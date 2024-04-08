@@ -24,7 +24,7 @@
 				<x-form.error-messages></x-form.error-messages>
 
 				<div class="space-y-3 mt-5">
-					<div class="text-xxs md:text-xs"><a href="" class="text-white hover:text-white/70 font-bold">Забыли
+					<div class="text-xxs md:text-xs"><a href="{{ route('user.forget_password') }}" class="text-white hover:text-white/70 font-bold">Забыли
 							пароль?</a></div>
 					<div class="text-xxs md:text-xs"><a href="{{ route('user.register.index') }}" class="text-white hover:text-white/70 font-bold">Регистрация</a>
 					</div>

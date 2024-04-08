@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Lk;
 
 use App\Helpers\ValidateHelperTrait;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,16 +19,8 @@ class LoginController extends Controller
 		return view('lk.login.index');
 	}
 
-	public function login(Request $request): RedirectResponse
+	public function login(LoginRequest $request): RedirectResponse
 	{
-		if(!$request->validate([
-			'phone' => ['required', "min:{$this->minLengthPhoneNumber}"],
-			'password' => ['required']
-		])) {
-			return redirect()->back()->withErrors([
-				'phone' => 'Проверьте правильность введенных данных'
-			]);
-		}
 
 		$phoneNumber = $this->correctPhoneNumber($request->input('phone'));
 

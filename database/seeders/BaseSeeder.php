@@ -27,4 +27,11 @@ class BaseSeeder extends DatabaseSeeder
 		}
 	}
 
+	public function saveFilesIfExists(object $object, mixed $data): void
+	{
+		if (!empty($data['cover'])) $object->saveCover($data['cover']);
+		if (!empty($data['photos'])) $object->savePhotos($data['photos']);
+		if (!empty($data['files'])) $object->saveFiles($data['files']);
+	}
+
 }

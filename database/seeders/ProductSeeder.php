@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\File\SaveFilesTrait;
+use App\Models\File\FileTrait;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Vendor;
 
 class ProductSeeder extends BaseSeeder
 {
-	use SaveFilesTrait;
+	use FileTrait;
 
 	public function run(): void
 	{
@@ -25,9 +25,7 @@ class ProductSeeder extends BaseSeeder
 				'vendor_id' => $this->saveVendor($data['vendor']),
 				'sort' => $i + 1,
 			])->save();
-			if (!empty($data['cover'])) $this->saveCover($product, $data);
-			if (!empty($data['photos'])) $this->savePhotos($product, $data);
-
+			$this->saveFilesIfExists($product, $data);
 			$this->saveCategories($product, $data);
 		}
 	}

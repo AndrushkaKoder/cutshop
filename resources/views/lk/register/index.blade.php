@@ -7,9 +7,26 @@
 				<h1 class="mb-5 text-lg font-semibold text-center">Регистрация</h1>
 				<form class="space-y-3" method="post" action="{{ route('user.register.store') }}">
 					@csrf
-					<x-form.text-input name="name" type="text" required placeholder="Имя"></x-form.text-input>
-					<x-form.text-input name="email" type="email" required placeholder="E-mail"></x-form.text-input>
-					<x-form.phone-input name="phone" required placeholder="Телефон"></x-form.phone-input>
+					<x-form.text-input
+						name="name"
+						type="text"
+						value="{{ old('name') }}"
+						required
+						placeholder="Имя"
+					></x-form.text-input>
+					<x-form.text-input
+						name="email"
+						type="email"
+						value="{{ old('email') }}"
+						required
+						placeholder="E-mail"
+					></x-form.text-input>
+					<x-form.phone-input
+						name="phone"
+						value="{{ old('phone') }}"
+						required
+						placeholder="Телефон"
+					></x-form.phone-input>
 
 					<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 						<div>

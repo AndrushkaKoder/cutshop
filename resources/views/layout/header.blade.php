@@ -30,13 +30,16 @@
 			<div class="header-actions flex items-center gap-3 md:gap-5">
 
 				@if(\Illuminate\Support\Facades\Auth::check())
-					@php($user = \Illuminate\Support\Facades\Auth::user())
+					@php
+						$user = \Illuminate\Support\Facades\Auth::user();
+						$cover = $user->getCover() ?? noImage();
+					@endphp
 					<div x-data="{dropdownProfile: false}" class="profile relative">
 						<button @click="dropdownProfile = ! dropdownProfile"
 						        class="flex items-center text-dark hover:text-pink transition">
 							<span class="sr-only">Профиль</span>
-													<img src="./images/avatar.jpg" class="shrink-0 w-7 md:w-9 h-7 md:h-9 rounded-full"
-													     alt="Данил Шуцкий">
+								<img src="{{ $cover }}" class="shrink-0 w-7 md:w-9 h-7 md:h-9 rounded-full"
+								     alt="{{ $user->name }}">
 							<span class="hidden md:block ml-2 font-medium">{{ $user->name }}</span>
 							<svg class="shrink-0 w-3 h-3 ml-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
 							     viewBox="0 0 30 16">
@@ -58,7 +61,7 @@
 						>
 							<h5 class="text-body text-xs">Мой профиль</h5>
 							<div class="flex items-center mt-3">
-								<img src="{{ asset('images/avatar.jpg') }}" class="w-11 h-11 rounded-full" alt="user photo">
+								<img src="{{ $cover }}" class="w-11 h-11 rounded-full" alt="user photo">
 								<span class="ml-3 text-xs md:text-sm font-bold">{{ $user->name }}</span>
 							</div>
 							<div class="mt-4">
@@ -85,7 +88,6 @@
 					</div>
 				@else
 					<a href="{{ route('user.login') }}" class="profile hidden xs:flex items-center">
-						{{--					<svg class="profile-icon w-8 h-8 text-purple" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><defs/><path d="M26.749 24.93A13.99 13.99 0 1 0 2 16a13.899 13.899 0 0 0 3.251 8.93l-.02.017c.07.084.15.156.222.239c.09.103.187.2.28.3c.28.304.568.596.87.87c.092.084.187.162.28.242c.32.276.649.538.99.782c.044.03.084.069.128.1v-.012a13.901 13.901 0 0 0 16 0v.012c.044-.031.083-.07.128-.1c.34-.245.67-.506.99-.782c.093-.08.188-.159.28-.242c.302-.275.59-.566.87-.87c.093-.1.189-.197.28-.3c.071-.083.152-.155.222-.24zM16 8a4.5 4.5 0 1 1-4.5 4.5A4.5 4.5 0 0 1 16 8zM8.007 24.93A4.996 4.996 0 0 1 13 20h6a4.996 4.996 0 0 1 4.993 4.93a11.94 11.94 0 0 1-15.986 0z" fill="currentColor"/></svg>--}}
 						<span class="profile-text relative ml-2 text-dark text-xxs md:text-xs font-bold">Личный кабинет</span>
 					</a>
 				@endif
@@ -109,7 +111,7 @@
 						      d="M4 6h16M4 12h16M4 18h16"></path>
 					</svg>
 				</button>
-			</div><!-- /.header-actions -->
-		</div><!-- /.header-inner -->
-	</div><!-- /.container -->
+			</div>
+		</div>
+	</div>
 </header>

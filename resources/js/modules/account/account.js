@@ -20,6 +20,6 @@ function deleteAlerts() {
 			alerts.forEach((alert) => {
 				alert.remove()
 			})
-		}, 3000)
+		}, 10000)
 	}
 }
