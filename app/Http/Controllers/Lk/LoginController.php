@@ -42,7 +42,7 @@ class LoginController extends Controller
 			'password' => $request->input('password')
 		])) {
 			$request->session()->regenerate();
-			return redirect()->route('user.lk.edit');
+			return $this->redirectTo();
 		}
 
 		return redirect()->back()->withErrors([

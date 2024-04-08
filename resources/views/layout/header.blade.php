@@ -65,7 +65,7 @@
 								<ul class="space-y-2">
 									<li><a href="orders.html" class="text-body hover:text-white text-xs font-medium">Мои
 											заказы</a></li>
-									<li><a href="{{ route('user.lk.edit', ['id' => \Illuminate\Support\Facades\Auth::id()]) }}" class="text-body hover:text-white text-xs font-medium">Редактировать
+									<li><a href="{{ route('user.lk.edit') }}" class="text-body hover:text-white text-xs font-medium">Редактировать
 											профиль</a></li>
 								</ul>
 							</div>
