@@ -17,7 +17,7 @@ class RedirectIfAuth
 	public function handle(Request $request, Closure $next): Response
 	{
 		if (Auth::check()) {
-			return redirect()->route('user.lk.edit', ['id' => Auth::id()]);
+			return redirect()->route('user.lk.edit');
 		}
 		return $next($request);
 	}

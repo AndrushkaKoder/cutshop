@@ -2,17 +2,17 @@
 
 namespace App\Models\File;
 
-use App\Models\File;
-use Illuminate\Http\Request;
+use App\Models\File as ModelFile;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait FileTrait
 {
+	private string $driver = 'public';
 
 	public function files(): \Illuminate\Database\Eloquent\Relations\MorphMany
 	{
-		return $this->morphMany(File::class, 'fileable');
+		return $this->morphMany(ModelFile::class, 'fileable');
 	}
 
 	public function getCover(): ?string
@@ -23,8 +23,7 @@ trait FileTrait
 
 		if (!$file) return null;
 
-		$filepath = $this->getObjectFilePath($file->filename);
-		return Storage::exists('public' . "/$filepath") ? "/storage/{$filepath}" : null;
+		return asset('storage/' . $this->pathToSaveFile($file->filename));
 	}
 
 	public function getPhotos(): array
@@ -37,7 +36,7 @@ trait FileTrait
 			->toArray();
 
 		foreach ($photos as $photo) {
-			$filePath = $this->getObjectFilePath($photo, 'photos');
+			$filePath = $this->pathToSaveFile($photo, 'photos');
 			if (Storage::exists('public' . "/{$filePath}")) {
 				$photosArray[] = "/storage/{$filePath}";
 			}
@@ -50,15 +49,84 @@ trait FileTrait
 
 	}
 
-	public function saveCover(Request $request): void
+	public function saveCover(mixed $data): void
 	{
-		$path = $request->file('cover')->store('xxx', 'public');
-		dd($path);
+		if (is_string($data) && str_contains($data, 'http')) {
+			$cover = file_get_contents($data);
+			$filename = md5($data) . '.' . $this->getExtension($data);
+			Storage::disk($this->driver)
+				->put(
+					$this->pathToSaveFile($filename),
+					$cover
+				);
+		} else {
+			$cover = is_object($data)
+				?
+				$data
+				:
+				new UploadedFile($this->pathToSeedFile($data), $data);
+
+			$filename = $cover->getClientOriginalName();
+			Storage::disk($this->driver)->put($this->pathToSaveFile($filename), $cover->getContent());
+		}
+		$this->addFileToObject($filename, FileEnum::COVER);
 	}
 
-	private function getObjectFilePath(string $endPoint, string $type = 'cover'): string
+	public function savePhotos(mixed $data): void
+	{
+		if (is_string($data)) {
+			$pathToPhotos = $this->pathToSeedFile($data);
+			if (is_dir($pathToPhotos)) {
+				$photosArray = scandir($pathToPhotos);
+				if (count($photosArray) > 2) {
+					foreach ($photosArray as $i => $photo) {
+						if ($i === 0 || $i === 1) continue;
+						$content = file_get_contents("{$pathToPhotos}/{$photo}");
+						$filename = md5($photo) . '.' . $this->getExtension($photo);
+						Storage::disk($this->driver)
+							->put(
+								$this->pathToSaveFile($filename, 'photos'),
+								$content
+							);
+						$this->addFileToObject($filename, FileEnum::PHOTOS);
+					}
+				}
+			}
+		}
+	}
+
+	public function saveFiles(): void
+	{
+
+	}
+
+	private function pathToSaveFile(string $endPoint = '', string $type = 'cover'): string
 	{
 		return get_class($this) . '/' . $this->id . "/{$type}/{$endPoint}";
+	}
+
+	private function getExtension(string $path): string
+	{
+		return preg_replace('/.+\./', '', $path);
+	}
+
+	private function pathToSeedFile(string $file): string
+	{
+		return storage_path('seed/' . $this->getTable() . '/' . $file);
+	}
+
+	private function addFileToObject(string $filename, mixed $type): void
+	{
+		$params = [
+			'fileable_type' => get_class($this),
+			'fileable_id' => $this->id,
+			'filename' => $filename,
+			'type' => $type
+		];
+
+		$this->files()->updateOrCreate($type === FileEnum::COVER ? [
+			'type' => FileEnum::COVER
+		] : [], $params);
 	}
 
 }

@@ -46,7 +46,7 @@ class LkController extends Controller
 		}
 
 		if ($updateData) $user->update($updateData);
-		if ($request->file('cover')) $user->saveCover($request);
+		if ($request->file('cover')) $user->saveCover($request->file('cover'));
 
 		session()->flash('success', 'Данные обновлены!');
 		return redirect()->back();

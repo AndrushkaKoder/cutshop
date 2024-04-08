@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\File\SaveFilesTrait;
+use App\Models\File\FileTrait;
 use App\Models\Vendor;
 
 class VendorSeeder extends BaseSeeder
 {
 
-	use SaveFilesTrait;
+	use FileTrait;
 
 	public function run(): void
 	{
@@ -19,8 +19,7 @@ class VendorSeeder extends BaseSeeder
 				'title' => $data['title']
 			]);
 			$vendor->save();
-			if (!empty($data['cover'])) $this->saveCover($vendor, $data);
-			if (!empty($data['photos'])) $this->savePhotos($vendor, $data);
+			$this->saveFilesIfExists($vendor, $data);
 		}
 	}
 }
