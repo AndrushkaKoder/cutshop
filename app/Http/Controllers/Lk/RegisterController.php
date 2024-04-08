@@ -27,7 +27,7 @@ class RegisterController extends Controller
 		if (!$request->validate([
 			'email' => ['required', 'email:dns', 'string'],
 			'name' => ['required', 'string', 'min:3'],
-			'phone' => ['required', "min:{$this->minLengthPhoneNumber}"],
+			'phone' => ['required'],
 			'password' => ['required', "min:{$this->minLengthPassword}", 'confirmed'],
 		])) {
 			return redirect()->back()->withErrors([
@@ -54,6 +54,6 @@ class RegisterController extends Controller
 
 		Auth::login($user);
 
-		return redirect()->route('user.lk.edit', ['id' => $user->id]);
+		return $this->redirectTo();
 	}
 }

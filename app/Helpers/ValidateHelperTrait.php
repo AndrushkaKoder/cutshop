@@ -34,4 +34,9 @@ trait ValidateHelperTrait
 		return preg_replace('/\W+/', '', $phone);
 	}
 
+	public function redirectTo(string $path = '/', int $code = 302): \Illuminate\Http\RedirectResponse
+	{
+		return redirect()->to($path, $code);
+	}
+
 }

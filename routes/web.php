@@ -20,8 +20,9 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('/lk/{id}/edit', [LkController::class, 'edit'])->middleware('auth')->name('user.lk.edit');
-Route::post('/lk/{id}/update', [LkController::class, 'update'])->middleware('auth')->name('user.lk.update');
+Route::get('/lk/edit', [LkController::class, 'edit'])->middleware('auth')->name('user.lk.edit');
+Route::post('/lk/update', [LkController::class, 'update'])->middleware('auth')->name('user.lk.update');
+Route::post('/lk/destroy', [LkController::class, 'destroy'])->middleware('auth')->name('user.lk.destroy');
 
 include 'auth.php';
 
