@@ -39,7 +39,8 @@
 
 					<x-form.form-red-button text="Регистрация"></x-form.form-red-button>
 
-					<x-form.error-messages></x-form.error-messages>
+					@include('components.notifications')
+
 				</form>
 				<div class="space-y-3 mt-5">
 					<div class="text-xxs md:text-xs">

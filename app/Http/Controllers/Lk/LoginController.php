@@ -21,7 +21,6 @@ class LoginController extends Controller
 
 	public function login(LoginRequest $request): RedirectResponse
 	{
-
 		$phoneNumber = $this->correctPhoneNumber($request->input('phone'));
 
 		if (!User::query()->where('phone', $phoneNumber)->count()) {
@@ -42,7 +41,6 @@ class LoginController extends Controller
 			'phone' => 'Неверный логин / пароль'
 		]);
 	}
-
 
 	public function logout(Request $request): RedirectResponse
 	{

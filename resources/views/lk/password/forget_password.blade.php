@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="max-w-[640px] mt-12 mx-auto p-6 xs:p-8 md:p-12 2xl:p-16 rounded-[20px] bg-purple">
 				<h1 class="mb-5 text-lg font-semibold">Восстановить пароль</h1>
-				<form class="space-y-3" method="post" action="{{ route('user.password_reset') }}">
+				<form class="space-y-3" method="post" action="{{ route('password.email') }}">
 					@csrf
 					<x-form.text-input
 						name="email"
@@ -24,11 +24,7 @@
 					</div>
 				</div>
 
-				<x-form.error-messages></x-form.error-messages>
-
-				@if(session()->has('success'))
-					<x-form.success-messages text="{{ session()->get('success') }}"></x-form.success-messages>
-				@endif
+				@include('components.notifications')
 
 				<x-form.policy></x-form.policy>
 			</div>

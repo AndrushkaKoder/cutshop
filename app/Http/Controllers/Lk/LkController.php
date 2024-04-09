@@ -12,7 +12,7 @@ class LkController extends Controller
 {
 	use ValidateHelperTrait;
 
-	public function edit(Request $request)
+	public function edit()
 	{
 		return view('lk.account.edit', ['user' => Auth::user()]);
 	}
@@ -52,7 +52,7 @@ class LkController extends Controller
 		return redirect()->back();
 	}
 
-	public function destroy(Request $request): \Illuminate\Http\RedirectResponse
+	public function destroy(): \Illuminate\Http\RedirectResponse
 	{
 		User::query()->whereId(Auth::id())->delete();
 		Auth::logout();

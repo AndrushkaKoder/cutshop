@@ -36,11 +36,7 @@
 							</div>
 						</div>
 
-						<x-form.error-messages></x-form.error-messages>
-
-						@if(session()->has('success'))
-							<x-form.success-messages text="{{ session()->get('success') }}"></x-form.success-messages>
-						@endif
+						@include('components.notifications')
 
 						<p class="text-white">Телефон, к которому привязан Ваш аккаунт</p>
 						<x-form.disabled-text-input type="tel" value="{{ $user->phone }}"></x-form.disabled-text-input>

@@ -16,15 +16,19 @@
 						value="{{ old('phone') }}"
 						placeholder="Номер телефона"
 					></x-form.phone-input>
-					<x-form.text-input type="password" required placeholder="Ваш пароль"
-					                   name="password"></x-form.text-input>
+					<x-form.text-input
+						type="password"
+						required
+						placeholder="Ваш пароль"
+						name="password"
+					></x-form.text-input>
 					<x-form.form-red-button text="Войти"></x-form.form-red-button>
 				</form>
 
-				<x-form.error-messages></x-form.error-messages>
+				@include('components.notifications')
 
 				<div class="space-y-3 mt-5">
-					<div class="text-xxs md:text-xs"><a href="{{ route('user.forget_password') }}" class="text-white hover:text-white/70 font-bold">Забыли
+					<div class="text-xxs md:text-xs"><a href="{{ route('password.request') }}" class="text-white hover:text-white/70 font-bold">Забыли
 							пароль?</a></div>
 					<div class="text-xxs md:text-xs"><a href="{{ route('user.register.index') }}" class="text-white hover:text-white/70 font-bold">Регистрация</a>
 					</div>

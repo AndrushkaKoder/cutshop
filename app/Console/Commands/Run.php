@@ -16,6 +16,6 @@ class Run extends Command
 		$this->call('migrate:fresh');
 		$this->call('db:seed');
 		$this->call('cache:clear');
-		$this->call('user:create');
+//		$this->call('user:create');
 	}
 }
