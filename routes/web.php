@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+#auth routes
 include 'auth/auth.php';
+
+#account routes
 include 'lk/lk.php';
 
+#application routes
 Route::get('/', function () {
 	return view('home.index');
 })->name('home');

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Lk\LoginController;
+use App\Http\Controllers\Lk\Password\ForgotPasswordController;
 use App\Http\Controllers\Lk\Password\ResetPasswordController;
 use App\Http\Controllers\Lk\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -21,17 +22,27 @@ Route::name('user.')->group(function () {
 
 	#logout
 	Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
-
-	#reset password index
-	Route::get('/forget_password', [ResetPasswordController::class, 'index'])
-		->middleware('guest')
-		->name('forget_password');
-
-	#reset password
-	Route::post('/reset_password', [ResetPasswordController::class, 'reset'])
-		->middleware('guest')
-		->name('password_reset');
 });
 
-Route::post('/send_password', [ResetPasswordController::class, 'send'])->middleware('guest')->name('password.reset');
-Route::post('/send_password', [ResetPasswordController::class, 'send'])->middleware('guest')->name('password.reset');
+#forgot password index
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])
+	->middleware('guest')
+	->name('password.request');
+
+#forgot password form (email)
+Route::post('/forgot-password', [ForgotPasswordController::class, 'email'])
+	->middleware('guest')
+	->name('password.email');
+
+#view new password
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset'])
+	->middleware('guest')
+	->name('password.reset');
+
+#update user password
+Route::post('/reset-password', [ResetPasswordController::class, 'update'])
+	->middleware('guest')
+	->name('password.update');
+
+
+
