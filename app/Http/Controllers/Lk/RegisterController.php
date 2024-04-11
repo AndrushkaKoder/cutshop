@@ -6,6 +6,7 @@ use App\Helpers\ValidateHelperTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterStoreRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +39,9 @@ class RegisterController extends Controller
 			'password' => $request->validated('password'),
 		]);
 
+		event(new Registered($user));
 		Auth::login($user);
-		return $this->redirectTo();
+
+		return redirect()->route('verification.notice');
 	}
 }

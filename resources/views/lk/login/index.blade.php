@@ -23,6 +23,9 @@
 						name="password"
 					></x-form.text-input>
 					<x-form.form-red-button text="Войти"></x-form.form-red-button>
+
+					<input type="checkbox" id="remember" name="remember_me">
+					<label for="remember">Запомнить меня</label>
 				</form>
 
 				@include('components.notifications')

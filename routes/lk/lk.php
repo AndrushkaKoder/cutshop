@@ -3,10 +3,11 @@
 use App\Http\Controllers\Lk\LkController;
 use Illuminate\Support\Facades\Route;
 
-Route::name('user.')->group(function () {
-	Route::get('/lk/edit', [LkController::class, 'edit'])->middleware('auth')->name('user.lk.edit');
-	Route::post('/lk/update', [LkController::class, 'update'])->middleware('auth')->name('user.lk.update');
-	Route::post('/lk/destroy', [LkController::class, 'destroy'])->middleware('auth')->name('user.lk.destroy');
-
+Route::name('user.')->middleware(['auth', 'verified'])->group(function () {
+	Route::get('/lk/edit', [LkController::class, 'edit'])->name('lk.edit');
+	Route::post('/lk/update', [LkController::class, 'update'])->name('lk.update');
+	Route::post('/lk/destroy', [LkController::class, 'destroy'])->name('lk.destroy');
 });
+
+Route::get('/logout', [LkController::class, 'logout'])->middleware('auth')->name('user.logout');
 

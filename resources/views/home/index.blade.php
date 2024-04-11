@@ -102,17 +102,7 @@
 				</div>
 			</section>
 
-			<section class="mt-20">
-				<!-- Section heading -->
-				<h2 class="text-lg lg:text-[42px] font-black">Бренды</h2>
-
-				<!-- Brands list -->
-				<div class="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 gap-4 md:gap-8 mt-12">
-					@for($i = 1; $i <= 6; $i++)
-						@include('vendors.vendors', ['i' => $i])
-					@endfor
-				</div>
-			</section>
+			@include('home.sections.vendors')
 
 		</div>
 	</main>

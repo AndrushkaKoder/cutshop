@@ -1,5 +1,6 @@
 @import "../sass/app.sass";
 @import "../sass/account.sass";
+@import "../sass/homepage.sass";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

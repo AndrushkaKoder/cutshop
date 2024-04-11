@@ -64,6 +64,12 @@
 								<img src="{{ $cover }}" class="w-11 h-11 rounded-full" alt="user photo">
 								<span class="ml-3 text-xs md:text-sm font-bold">{{ $user->name }}</span>
 							</div>
+							@if($user->email_verified_at)
+								<span class="text-green-400">Аккаунт подтверждён</span>
+							@else
+								<span class="text-red-500">Аккаунт не подтверждён</span>
+							@endif
+							<span class="text-green-400"></span>
 							<div class="mt-4">
 								<ul class="space-y-2">
 									<li><a href="orders.html" class="text-body hover:text-white text-xs font-medium">Мои

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Lk;
 use App\Helpers\ValidateHelperTrait;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,6 +51,18 @@ class LkController extends Controller
 		if ($request->file('cover')) $user->saveCover($request->file('cover'));
 
 		session()->flash('success', 'Данные обновлены!');
+		return redirect()->back();
+	}
+
+	public function logout(Request $request): RedirectResponse
+	{
+		if (Auth::check()) {
+			Auth::logout();
+			$request->session()->regenerateToken();
+			$request->session()->invalidate();
+			return redirect()->route('home');
+		}
+
 		return redirect()->back();
 	}
 

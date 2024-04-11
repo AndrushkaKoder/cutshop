@@ -38,4 +38,5 @@ class RegisterStoreRequest extends FormRequest
 			'password' => 'Пароль',
 		];
 	}
+
 }

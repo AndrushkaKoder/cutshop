@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\NotVerifiedEmail;
 use App\Http\Middleware\RedirectIfAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
 		'signed' => \App\Http\Middleware\ValidateSignature::class,
 		'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-		'redirect_if_auth' => RedirectIfAuth::class
+		'redirect_if_auth' => RedirectIfAuth::class,
+		'not_verified' => NotVerifiedEmail::class
 	];
 }

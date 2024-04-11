@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -29,10 +28,12 @@ class LoginController extends Controller
 			]);
 		}
 
+		$remember = boolval($request->input('remember_me'));
+
 		if (Auth::attempt([
 			'phone' => $phoneNumber,
 			'password' => $request->input('password')
-		])) {
+		], $remember)) {
 			$request->session()->regenerate();
 			return $this->redirectTo();
 		}
@@ -40,17 +41,5 @@ class LoginController extends Controller
 		return redirect()->back()->withErrors([
 			'phone' => 'Неверный логин / пароль'
 		]);
-	}
-
-	public function logout(Request $request): RedirectResponse
-	{
-		if (Auth::check()) {
-			Auth::logout();
-			$request->session()->regenerateToken();
-			$request->session()->invalidate();
-			return redirect()->route('home');
-		}
-
-		return redirect()->back();
 	}
 }

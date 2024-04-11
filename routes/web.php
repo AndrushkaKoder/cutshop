@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +21,7 @@ include 'auth/auth.php';
 include 'lk/lk.php';
 
 #application routes
-Route::get('/', function () {
-	return view('home.index');
-})->name('home');
-
+Route::get('/', HomeController::class)->name('home');
 
 
 
